@@ -12,14 +12,29 @@ namespace Repository
     {
         public List<Muscle> GetMuscles()
         {
-            var query = "SELECT *" +
-                @"FROM Project p
-                INNER JOIN Client c ON c.ClientId = p.ClientId
-                WHERE p.[ProjectId] = @id";
+            var query = "SELECT * FROM [Traning_DB].[dbo].[Muscles]";
 
             var command = GetCommand(query, CommandType.Text);
 
             return GetEntitiesFromDatabase<Muscle>(command).ToList();
+        }
+
+        protected override object MapRowToEntity(IDataReader reader)
+        {
+            var muscle = new Muscle();
+            muscle.Id = reader.GetInt32(reader.GetOrdinal("MuscleId"));
+            muscle.MuscleName = reader.GetString(reader.GetOrdinal("MuscleName"));
+
+            return muscle;
+        }
+
+        private List<string> GetOtherNames(string otherNames)
+        {
+            if (otherNames != string.Empty)
+            {
+                return otherNames.Split(new char[] { ',' }).ToList();
+            }
+            return null;
         }
     }
 }
