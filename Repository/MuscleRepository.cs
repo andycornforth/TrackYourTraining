@@ -1,22 +1,25 @@
 ﻿using Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Repository
 {
-    public class MovementRepository : BaseSqlRepository
+    public class MuscleRepository : BaseSqlRepository
     {
-        public List<Movement> GetMovements()
+        public List<Muscle> GetMuscles()
         {
             var query = "SELECT *" +
                 @"FROM Project p
                 INNER JOIN Client c ON c.ClientId = p.ClientId
                 WHERE p.[ProjectId] = @id";
 
-            return GetEntitiesFromDatabase<Movement>(command).ToList();
+            var command = GetCommand(query, CommandType.Text);
+
+            return GetEntitiesFromDatabase<Muscle>(command).ToList();
         }
     }
 }
