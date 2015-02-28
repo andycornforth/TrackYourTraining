@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[Day]
+(
+	[DayId] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [DayName] NVARCHAR(50) NOT NULL
+)

@@ -41,13 +41,13 @@ namespace Repository
             return GetEntitiesFromDatabase<Movement>(command).FirstOrDefault();
         }
 
-        public void InsertNewMovement(string name, Muscle primaryMuscle, string secondaryMuscles, WeightType weightType,
+        public void InsertNewMovement(string name, string primaryMuscleId, string secondaryMuscles, WeightType weightType,
             DifficultyLevel difficultyLevel, string description)
         {
             string insertion = @"INSERT into [Training_DB].[dbo].[Movement] (MovementName, PrimaryMuscleId, SecondaryMuscles, WeightTypeId, DifficultyLevelId, Description) 
                 VALUES ('" +
                 name + "', '" +
-                primaryMuscle.Id + "', '" +
+                primaryMuscleId + "', '" +
                 secondaryMuscles + "', '" +
                 Convert.ChangeType(weightType, weightType.GetTypeCode()) + "', '" +
                 Convert.ChangeType(difficultyLevel, difficultyLevel.GetTypeCode()) + "', '" +
@@ -57,13 +57,13 @@ namespace Repository
             ExecuteNonQueryChecked(command);
         }
 
-        public void InsertNewMovement(string name, Muscle primaryMuscle, WeightType weightType,
+        public void InsertNewMovement(string name, string primaryMuscleId, WeightType weightType,
             DifficultyLevel difficultyLevel, string description)
         {
             string insertion = @"INSERT into [Training_DB].[dbo].[Movement] (MovementName, PrimaryMuscleId,WeightTypeId, DifficultyLevelId, Description) 
                 VALUES ('" +
                 name + "', '" +
-                primaryMuscle.Id + "', '" +
+                primaryMuscleId + "', '" +
                 Convert.ChangeType(weightType, weightType.GetTypeCode()) + "', '" +
                 Convert.ChangeType(difficultyLevel, difficultyLevel.GetTypeCode()) + "', '" +
                 description + "');";

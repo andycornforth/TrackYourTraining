@@ -49,4 +49,32 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="SecondaryMuscles" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="9844ca9a-370d-4ef6-85ad-da19536c4312" ChangeDateTime="02/28/2015 16:57:51">
+    <Property Name="ElementName" Value="[dbo].[Set].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Set]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SetId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4854502c-e2c1-4d13-b37f-dd7fbd607b73" ChangeDateTime="02/28/2015 17:03:38">
+    <Property Name="ElementName" Value="[dbo].[Day].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Day]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DayId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="620fc417-eb4d-4aad-b90a-b13a69568cca" ChangeDateTime="02/28/2015 17:06:15">
+    <Property Name="ElementName" Value="[dbo].[DaySet].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DaySet]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DaySetId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="744f2d8d-c305-4b5e-b1b2-4e00a731dc1c" ChangeDateTime="02/28/2015 17:06:49">
+    <Property Name="ElementName" Value="[dbo].[DaySet].[SetId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DaySet]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DayId" />
+  </Operation>
 </Operations>

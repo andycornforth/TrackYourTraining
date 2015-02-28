@@ -25,6 +25,11 @@ namespace Repository
             muscle.Id = reader.GetInt32(reader.GetOrdinal("MuscleId"));
             muscle.MuscleName = reader.GetString(reader.GetOrdinal("MuscleName"));
 
+            if (!reader.IsDBNull(2))
+            {
+                muscle.OtherNames = GetOtherNames(reader.GetString(reader.GetOrdinal("Othernames")));
+            }
+
             return muscle;
         }
 

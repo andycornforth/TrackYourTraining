@@ -41,6 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseSQLRepository.cs" />
+    <Compile Include="DaySetRepository.cs" />
+    <Compile Include="DayRepository.cs" />
+    <Compile Include="SetRepository.cs" />
     <Compile Include="MuscleRepository.cs" />
     <Compile Include="MovementRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

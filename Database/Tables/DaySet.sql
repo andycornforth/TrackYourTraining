@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[DaySet]
+(
+	[DaySetId] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [DayId] INT NOT NULL, 
+    [SetId] INT NOT NULL, 
+    CONSTRAINT [FK_DayId] FOREIGN KEY ([DayId]) REFERENCES [Day]([DayId]), 
+    CONSTRAINT [FK_SetId] FOREIGN KEY ([SetId]) REFERENCES [Set]([SetId])
+)
