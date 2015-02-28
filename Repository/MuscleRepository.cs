@@ -10,9 +10,9 @@ namespace Repository
 {
     public class MuscleRepository : BaseSqlRepository
     {
-        public List<Muscle> GetMuscles()
+        public List<Muscle> GetMuscle()
         {
-            var query = "SELECT * FROM [Traning_DB].[dbo].[Muscles]";
+            var query = "SELECT * FROM [Training_DB].[dbo].[Muscle]";
 
             var command = GetCommand(query, CommandType.Text);
 

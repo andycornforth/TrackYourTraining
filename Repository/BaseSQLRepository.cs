@@ -17,7 +17,7 @@ namespace Repository
 
         public BaseSqlRepository()
         {
-            _connectionString = "Data Source=.;Initial Catalog=Traning_DB;Integrated Security=True";
+            _connectionString = "Data Source=.;Initial Catalog=Training_DB;Integrated Security=True";
         }
 
         protected IDbCommand GetCommand(string commandText, CommandType commandType)

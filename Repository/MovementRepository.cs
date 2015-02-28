@@ -14,10 +14,12 @@ namespace Repository
     {
         public List<Movement> GetMovements()
         {
-            var query = @"SELECT [Traning_DB].[dbo].[Movements].MovementId, [Traning_DB].[dbo].[Movements].MovementName, [Traning_DB].[dbo].[Muscles].MuscleId, [Traning_DB].[dbo].[Muscles].MuscleName, [Traning_DB].[dbo].[Movements].WeightTypeId, [Traning_DB].[dbo].[Movements].DifficultyLevelId, [Traning_DB].[dbo].[Movements].Description, [Traning_DB].[dbo].[Movements].AdditionalInformation
-                            FROM [Traning_DB].[dbo].[Movements]
-                            INNER JOIN [Traning_DB].[dbo].[Muscles]
-                            ON [Traning_DB].[dbo].[Movements].PrimaryMuscleId = [Traning_DB].[dbo].[Muscles].MuscleId";
+            var query = @"SELECT [Training_DB].[dbo].[Movement].MovementId, [Training_DB].[dbo].[Movement].MovementName, [Training_DB].[dbo].[Muscle].MuscleId, 
+                            [Training_DB].[dbo].[Muscle].MuscleName, [Training_DB].[dbo].[Movement].WeightTypeId, [Training_DB].[dbo].[Movement].DifficultyLevelId, 
+                            [Training_DB].[dbo].[Movement].Description
+                            FROM [Training_DB].[dbo].[Movement]
+                            INNER JOIN [Training_DB].[dbo].[Muscle]
+                            ON [Training_DB].[dbo].[Movement].PrimaryMuscleId = [Training_DB].[dbo].[Muscle].MuscleId";
 
             var command = GetCommand(query, CommandType.Text);
 
@@ -26,38 +28,27 @@ namespace Repository
 
         public Movement GetMovement(int movementId)
         {
-            var query = "SELECT * FROM [Traning_DB].[dbo].[Movements] WHERE MovementId = " + movementId; ;
+            var query =  @"SELECT [Training_DB].[dbo].[Movement].MovementId, [Training_DB].[dbo].[Movement].MovementName, [Training_DB].[dbo].[Muscle].MuscleId, 
+                            [Training_DB].[dbo].[Muscle].MuscleName, [Training_DB].[dbo].[Movement].WeightTypeId, [Training_DB].[dbo].[Movement].DifficultyLevelId, 
+                            [Training_DB].[dbo].[Movement].Description
+                            FROM [Training_DB].[dbo].[Movement]
+                            INNER JOIN [Training_DB].[dbo].[Muscle]
+                            ON [Training_DB].[dbo].[Movement].PrimaryMuscleId = [Training_DB].[dbo].[Muscle].MuscleId
+                            WHERE MovementId = " + movementId; 
 
             var command = GetCommand(query, CommandType.Text);
 
             return GetEntitiesFromDatabase<Movement>(command).FirstOrDefault();
         }
 
-        public void InsertNewMovement(string name, Muscle primaryMuscle, Muscle secondaryMuscle, Muscle tertiaryMuscle, WeightType weightType,
+        public void InsertNewMovement(string name, Muscle primaryMuscle, string secondaryMuscles, WeightType weightType,
             DifficultyLevel difficultyLevel, string description)
         {
-            string insertion = @"INSERT into [Traning_DB].[dbo].[Movements] (MovementName, PrimaryMuscleId, SecondaryMuscleId, TertiaryMuscleId, WeightTypeId, DifficultyLevelId, Description) 
+            string insertion = @"INSERT into [Training_DB].[dbo].[Movement] (MovementName, PrimaryMuscleId, SecondaryMuscles, WeightTypeId, DifficultyLevelId, Description) 
                 VALUES ('" +
                 name + "', '" +
                 primaryMuscle.Id + "', '" +
-                secondaryMuscle.Id + "', '" +
-                tertiaryMuscle.Id + "', '" +
-                Convert.ChangeType(weightType, weightType.GetTypeCode()) + "', '" +
-                Convert.ChangeType(difficultyLevel, difficultyLevel.GetTypeCode()) + "', '" +
-                description + "');";
-
-            var command = GetCommand(insertion, CommandType.Text);
-            ExecuteNonQueryChecked(command);
-        }
-
-        public void InsertNewMovement(string name, Muscle primaryMuscle, Muscle secondaryMuscle, WeightType weightType,
-            DifficultyLevel difficultyLevel, string description)
-        {
-            string insertion = @"INSERT into [Traning_DB].[dbo].[Movements] (MovementName, PrimaryMuscleId, SecondaryMuscleId, WeightTypeId, DifficultyLevelId, Description) 
-                VALUES ('" +
-                name + "', '" +
-                primaryMuscle.Id + "', '" +
-                secondaryMuscle.Id + "', '" +
+                secondaryMuscles + "', '" +
                 Convert.ChangeType(weightType, weightType.GetTypeCode()) + "', '" +
                 Convert.ChangeType(difficultyLevel, difficultyLevel.GetTypeCode()) + "', '" +
                 description + "');";
@@ -69,7 +60,7 @@ namespace Repository
         public void InsertNewMovement(string name, Muscle primaryMuscle, WeightType weightType,
             DifficultyLevel difficultyLevel, string description)
         {
-            string insertion = @"INSERT into [Traning_DB].[dbo].[Movements] (MovementName, PrimaryMuscleId,WeightTypeId, DifficultyLevelId, Description) 
+            string insertion = @"INSERT into [Training_DB].[dbo].[Movement] (MovementName, PrimaryMuscleId,WeightTypeId, DifficultyLevelId, Description) 
                 VALUES ('" +
                 name + "', '" +
                 primaryMuscle.Id + "', '" +
@@ -90,10 +81,6 @@ namespace Repository
             movement.WeightType = (WeightType) reader.GetInt32(reader.GetOrdinal("WeightTypeId"));
             movement.DifficultyLevel = (DifficultyLevel)reader.GetInt32(reader.GetOrdinal("DifficultyLevelId"));
             movement.Description = (string) reader["Description"];
-            if (!DBNull.Value.Equals(reader["AdditionalInformation"]))
-            {
-                movement.AdditionalInformation = (string)reader["AdditionalInformation"];
-            }
 
             return movement;
         }

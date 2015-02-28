@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="84f2de04-64a8-4ef4-96df-053d287f90ae" ChangeDateTime="02/28/2015 08:27:57">
+    <Property Name="ElementName" Value="[dbo].[Muscle].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Muscle]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MuscleId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1fab8413-83bf-4c39-afe5-a171866827e7" ChangeDateTime="02/28/2015 08:28:33">
+    <Property Name="ElementName" Value="[dbo].[Movement].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Movement]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MovementId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ba2f85f8-5082-4895-85eb-15d4aa963946" ChangeDateTime="02/28/2015 08:32:08">
+    <Property Name="ElementName" Value="[dbo].[Exercise].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Exercise]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ExerciseId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="abd0a519-f869-4ca1-8d96-f2bc7c572e72" ChangeDateTime="02/28/2015 08:35:43">
+    <Property Name="ElementName" Value="[dbo].[Set].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Set]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SetId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d80c42e1-95f8-4e3b-9ef7-9762ec5ba23a" ChangeDateTime="02/28/2015 08:42:40">
+    <Property Name="ElementName" Value="[dbo].[Movement].[SecondaryMuscleId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Movement]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SecondaryMuscle" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d6614fed-6a61-4c08-8ea0-649c6281351b" ChangeDateTime="02/28/2015 09:28:10">
+    <Property Name="ElementName" Value="[dbo].[CK_Muscle_Column]" />
+    <Property Name="ElementType" Value="SqlCheckConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Muscle]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[CK_Muscle_Id]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="289aaa10-dce1-4d7b-9533-45bcd52c38d5" ChangeDateTime="02/28/2015 15:23:08">
+    <Property Name="ElementName" Value="[dbo].[Movement].[SecondaryMuscle]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Movement]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SecondaryMuscles" />
+  </Operation>
+</Operations>
