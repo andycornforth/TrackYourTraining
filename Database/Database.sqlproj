@@ -67,6 +67,9 @@
     <Build Include="Tables\Set.sql" />
     <Build Include="Tables\Day.sql" />
     <Build Include="Tables\DaySet.sql" />
+    <Build Include="Tables\Program.sql" />
+    <Build Include="Tables\Tempo.sql" />
+    <Build Include="Tables\ProgramDay.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Database.refactorlog" />

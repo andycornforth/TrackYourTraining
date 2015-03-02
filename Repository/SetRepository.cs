@@ -1,4 +1,4 @@
-﻿using Models;
+﻿using DBModels;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,10 +11,10 @@ namespace Repository
     public class SetRepository : BaseSqlRepository
     {
 
-        public void CreateNewSet(int movementId, int setNumber, int reps, double weight)
+        public void CreateNewSet(int movementId, int setNumber, int reps, double weight, int tempoId = 1)
         {
-            string insertion = @"INSERT into [Training_DB].[dbo].[Set] (MovementId, SetNumber, Reps, Weight) 
-                VALUES (" + movementId + ", " + setNumber + ", " + reps + ", " + weight + ");";
+            string insertion = @"INSERT into [Training_DB].[dbo].[Set] (MovementId, SetNumber, Reps, Weight, TempoId) 
+                VALUES (" + movementId + ", " + setNumber + ", " + reps + ", " + weight + ", " + tempoId + ");";
 
             var command = GetCommand(insertion, CommandType.Text);
             ExecuteNonQueryChecked(command);
@@ -23,7 +23,7 @@ namespace Repository
         public Set GetSet(int setId)
         {
             var query = @"SELECT [Training_DB].[dbo].[Set].SetId, [Training_DB].[dbo].[Set].SetNumber, [Training_DB].[dbo].[Set].Reps, [Training_DB].[dbo].[Set].Weight,
-                            [Training_DB].[dbo].[Movement].MovementId, [Training_DB].[dbo].[Movement].MovementName, [Training_DB].[dbo].[Movement].PrimaryMuscleId, 
+                            [Training_DB].[dbo].[Set].TempoId, [Training_DB].[dbo].[Movement].MovementId, [Training_DB].[dbo].[Movement].MovementName, [Training_DB].[dbo].[Movement].PrimaryMuscleId, 
                             [Training_DB].[dbo].[Movement].WeightTypeId, [Training_DB].[dbo].[Movement].DifficultyLevelId, 
                             [Training_DB].[dbo].[Movement].Description, [Training_DB].[dbo].[Muscle].MuscleName
                             FROM [Training_DB].[dbo].[Set]
@@ -42,6 +42,7 @@ namespace Repository
         {
             var set = new Set();
             set.Movement = new Movement();
+
             set.Id = reader.GetInt32(reader.GetOrdinal("SetId"));
             set.SetNumber = reader.GetInt32(reader.GetOrdinal("SetNumber"));
             set.Reps = reader.GetInt32(reader.GetOrdinal("Reps"));

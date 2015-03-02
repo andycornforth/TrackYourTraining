@@ -26,8 +26,15 @@ VALUES ('High Bar Squat', 1, 'Glutes, Hamstrings, Core', 0, 2, 'The high bar squ
 ('Decline Dumbbell Bench Press', 5, 'Triceps, Shoulders, Core', 1, 2, 'The decline bench press is an upper body strength training exercise that consists of pressing a weight upwards from a horizontal decline position. The exercise works the pectoralis major as well as supporting chest, arm, and shoulder muscles like the anterior deltoids, serratus anterior, coracobrachialis, scapulae fixers, trapezii, and the triceps.'),
 ('Dumbbell Shoulder Press', 6, 'Triceps, Core', 1, 2, 'The seated dumbbell shoulder press is a full body compound exercise that works your shoulders the most. You perform it seated by lifting the bar from your front shoulders overhead until your elbows are locked.');
 
-INSERT INTO [dbo].[Set] ([MovementId], [SetNumber], [Reps], [Weight]) VALUES (1,1,8,82.5), (1,2,8,90);
+INSERT INTO [dbo].[Tempo] ([Eccentric],[Pause],[Concentric]) VALUES (2,0,1),(1,0,1);
 
-INSERT INTO [dbo].[Day] ([DayName]) VALUES ('Leg Day');
+INSERT INTO [dbo].[Set] ([MovementId], [SetNumber], [Reps], [Weight], [TempoId]) VALUES (1,1,8,82.5,1), (1,2,8,90,1), (2,1,5,90,2);
 
-INSERT INTO [dbo].[DaySet] ([DayId],[SetId]) VALUES (1,1),(1,2);
+INSERT INTO [dbo].[Day] ([DayName]) VALUES ('Leg Day'), ('Chest Day');
+
+INSERT INTO [dbo].[DaySet] ([DayId],[SetId]) VALUES (1,1),(1,2), (2,3);
+
+INSERT INTO [dbo].[Program] ([ProgramName],[FitnessGoalId],[Description]) VALUES ('Legs/Push/Pull/Off',0,'Repeat every four days');
+
+INSERT INTO [dbo].[ProgramDay] ([ProgramId],[DayId]) VALUES (1,1);
+

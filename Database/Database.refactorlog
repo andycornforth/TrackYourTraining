@@ -77,4 +77,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="DayId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="b635ba30-665c-47fa-a13e-c75314525127" ChangeDateTime="02/28/2015 22:18:21">
+    <Property Name="ElementName" Value="[dbo].[Program].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Program]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ProgramId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1afb7b63-9193-4314-b016-ac7c5925643c" ChangeDateTime="02/28/2015 22:24:48">
+    <Property Name="ElementName" Value="[dbo].[Tempo].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Tempo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TempoId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d457df4d-3d28-413b-b8da-fda561d74b5d" ChangeDateTime="02/28/2015 22:54:16">
+    <Property Name="ElementName" Value="[dbo].[ProgramDay].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ProgramDay]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ProgramDayId" />
+  </Operation>
 </Operations>

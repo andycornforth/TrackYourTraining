@@ -1,4 +1,4 @@
-﻿using Models;
+﻿using DBModels;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,13 +10,22 @@ namespace Repository
 {
     public class MuscleRepository : BaseSqlRepository
     {
-        public List<Muscle> GetMuscle()
+        public List<Muscle> GetMuscles()
         {
             var query = "SELECT * FROM [Training_DB].[dbo].[Muscle]";
 
             var command = GetCommand(query, CommandType.Text);
 
             return GetEntitiesFromDatabase<Muscle>(command).ToList();
+        }
+
+        public Muscle GetMuscle(int muscleId)
+        {
+            var query = "SELECT * FROM [Training_DB].[dbo].[Muscle] WHERE MuscleId = " + muscleId;
+
+            var command = GetCommand(query, CommandType.Text);
+
+            return GetEntitiesFromDatabase<Muscle>(command).FirstOrDefault();
         }
 
         protected override object MapRowToEntity(IDataReader reader)

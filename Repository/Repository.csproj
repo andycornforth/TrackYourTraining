@@ -41,21 +41,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseSQLRepository.cs" />
+    <Compile Include="ProgramDayRepository.cs" />
     <Compile Include="DaySetRepository.cs" />
     <Compile Include="DayRepository.cs" />
+    <Compile Include="ProgramRepository.cs" />
     <Compile Include="SetRepository.cs" />
     <Compile Include="MuscleRepository.cs" />
     <Compile Include="MovementRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DBModels\DBModels.csproj">
+      <Project>{931cd2c2-5607-4836-a1bc-88e132a6e507}</Project>
+      <Name>DBModels</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Exceptions\Exceptions.csproj">
       <Project>{bd7ec406-0d80-4c04-8a72-0fd110281bad}</Project>
       <Name>Exceptions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Models\Models.csproj">
-      <Project>{9b40c10c-c4be-4bca-a330-2cae65545336}</Project>
-      <Name>Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

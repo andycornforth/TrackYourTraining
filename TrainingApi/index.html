@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Track your Training</title>
+</head>
+<body>
+
+    <h2>All API Methods</h2>
+
+    <div>
+        <h2>Search by URI</h2>
+        <input type="text" id="request" size="5" style="width:300px; font-size:2em;" />
+        <input type="button" value="Search" onclick="find();" style="font-size:2em;" />
+
+        <p>Post:</p>
+        <textarea id="postArea" rows="10" cols="40"></textarea>
+
+        <p id="response" style="font-size:2em;" />
+    </div>
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+    <script>
+
+        function find() {
+            var postAreaValue = $('#postArea').val();
+            if (postAreaValue == undefined || postAreaValue == "") {
+                var request = $('#request').val();
+                $.getJSON('api/' + request)
+                    .done(function (data) {
+                        $('#response').text(formatItem(data));
+                    })
+                    .fail(function (jqXHR, textStatus, err) {
+                        $('#response').text('Error: ' + err);
+                    });
+            } else {
+                //var movement = {
+                //    Name: "aa",
+                //    PrimaryMuscleId: 1,
+                //    WeightTypeId: 1,
+                //    DifficultyLevelId: 1,
+                //    Description: "sdfs"
+                //};
+                $.ajax({
+                    type: "POST",
+                    data: postAreaValue,
+                    url: "api/Movement",
+                    contentType: "application/json"
+                });
+            }
+        }
+
+        function formatItem(item) {
+            return JSON.stringify(item);
+        }
+    </script>
+</body>
+</html>

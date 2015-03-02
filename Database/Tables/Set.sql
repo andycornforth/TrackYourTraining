@@ -5,5 +5,6 @@
     [SetNumber] INT NOT NULL, 
     [Reps] INT NOT NULL, 
     [Weight] FLOAT NOT NULL, 
+    [TempoId] INT NULL, 
     CONSTRAINT [FK_Movement] FOREIGN KEY ([MovementId]) REFERENCES [Movement]([MovementId])
 )
