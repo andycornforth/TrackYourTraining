@@ -11,12 +11,12 @@ namespace Repository
     public class ProgramDayRepository : BaseSqlRepository
     {
 
-        public void AddDayToProgram(int programId, int dayId)
+        public int AddDayToProgram(int programId, int dayId)
         {
-            string query = @"INSERT into [Training_DB].[dbo].[ProgramDay] (ProgramId, DayId) VALUES (" + programId + ", " + dayId + ");";
+            string query = @"INSERT into [Training_DB].[dbo].[ProgramDay] (ProgramId, DayId) VALUES (" + programId + ", " + dayId + ");  SELECT SCOPE_IDENTITY()";
 
             var command = GetCommand(query, CommandType.Text);
-            ExecuteNonQueryChecked(command);
+            return ExecuteInt32Scalar(command);
         }
 
         public List<ProgramDay> GetProgramDaysForProgram(int programId)

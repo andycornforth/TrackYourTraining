@@ -19,13 +19,30 @@ namespace Repository
             return GetEntitiesFromDatabase<Program>(command).ToList();
         }
 
+        public Program GetProgramById(int id)
+        {
+            var query = "SELECT * FROM [Training_DB].[dbo].[Program] WHERE ProgramId = " + id;
+
+            var command = GetCommand(query, CommandType.Text);
+
+            return GetEntitiesFromDatabase<Program>(command).FirstOrDefault();
+        }
+
+        public int InsertNewProgram(Program program)
+        {
+            string insertion = @"INSERT into [Training_DB].[dbo].[Program] (ProgramName, Description) 
+                VALUES ('" + program.Name + "', '" + program.Description + "'); SELECT SCOPE_IDENTITY()";
+
+            var command = GetCommand(insertion, CommandType.Text);
+            return ExecuteInt32Scalar(command);
+        }
+
         protected override object MapRowToEntity(IDataReader reader)
         {
             var program = new Program();
             program.Id = reader.GetInt32(reader.GetOrdinal("ProgramId"));
             program.Name = reader.GetString(reader.GetOrdinal("ProgramName"));
-            program.FitnessGoal = (FitnessGoal)reader.GetInt32(reader.GetOrdinal("FitnessGoalId"));
-            if (!reader.IsDBNull(3))
+            if (!reader.IsDBNull(2))
             {
                 program.Description = reader.GetString(reader.GetOrdinal("Description"));
             }

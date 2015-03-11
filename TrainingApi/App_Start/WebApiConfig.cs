@@ -14,9 +14,10 @@ namespace TrainingApi
             // Web API routes
             config.MapHttpAttributeRoutes();
 
+            //Muscle 
             config.Routes.MapHttpRoute(
                 name: "MusclesRoute",
-                routeTemplate: "api/Muscle/",
+                routeTemplate: "api/Muscle",
                 defaults: new { controller = "Muscle" }
             );
 
@@ -26,9 +27,10 @@ namespace TrainingApi
                 defaults: new { controller = "Muscle" }
             );
 
+            //Movement
             config.Routes.MapHttpRoute(
                 name: "MovementsRoute",
-                routeTemplate: "api/Movement/",
+                routeTemplate: "api/Movement",
                 defaults: new { controller = "Movement" }
             );
 
@@ -39,9 +41,66 @@ namespace TrainingApi
             );
 
             config.Routes.MapHttpRoute(
-                name: "MovementAdd",
-                routeTemplate: "api/Movement/",
+                name: "MovementAddRoute",
+                routeTemplate: "api/Movement",
                 defaults: new { controller = "Movement" }
+            );
+
+            //Set
+            config.Routes.MapHttpRoute(
+                name: "SetByIdRoute",
+                routeTemplate: "api/Set/{id}",
+                defaults: new { controller = "Set" }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "SetAddRoute",
+                routeTemplate: "api/Set",
+                defaults: new { controller = "Set", action = "Post" }//not working
+            );
+
+            //Day
+            config.Routes.MapHttpRoute(
+                name: "DayByIdRoute",
+                routeTemplate: "api/DayName/{dayId}",
+                defaults: new { controller = "Day", action = "GetDayName" }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "SetsByDayIdRoute",
+                routeTemplate: "api/SetsForDay/{dayId}",
+                defaults: new { controller = "Day", action = "GetSetsForDay" }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "DayAddRoute",
+                routeTemplate: "api/AddDay/",
+                defaults: new { controller = "Day", action = "PostNewDay" }//not working
+            );
+
+            //Program
+            config.Routes.MapHttpRoute(
+                name: "ProgramsRoute",
+                routeTemplate: "api/Programs",
+                defaults: new { controller = "Program", action = "GetAllPrograms" }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "ProgramByIdRoute",
+                routeTemplate: "api/Program/{programId}",
+                defaults: new { controller = "Program", action = "GetProgram" }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "DaysbyProgramIdRoute",
+                routeTemplate: "api/Days/{programId}",
+                defaults: new { controller = "Program", action = "GetDaysForProgram" }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "ProgramAddRoute",
+                routeTemplate: "api/Program",
+                defaults: new { controller = "Program", action = "PostNewProgram" }
             );
         }
     }

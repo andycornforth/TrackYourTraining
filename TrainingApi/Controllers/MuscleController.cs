@@ -1,30 +1,27 @@
-﻿using Repository;
+﻿using Business;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using TrainingApi.Models;
-using TrainingApi.Models.Mappers;
 
 namespace TrainingApi.Controllers
 {
     public class MuscleController : ApiController
     {
-        MuscleRepository muscleRepository = new MuscleRepository();
+        MuscleBusiness muscleBusiness = new MuscleBusiness();
 
-        public List<Muscle> GetAllMuscles()
+        [HttpGet]
+        public IHttpActionResult GetAllMuscles()
         {
-            var muscles = MuscleMapper.ToMuscleModelList(muscleRepository.GetMuscles());
-            return muscles;
+            return Ok(muscleBusiness.GetAllMuscles());
         }
 
+        [HttpGet]
         public IHttpActionResult GetMuscle(int id)
         {
-            var muscle = muscleRepository.GetMuscle(id);
-
-            return Ok(muscle);
+            return Ok(muscleBusiness.GetMuscleById(id));
         }
     }
 }

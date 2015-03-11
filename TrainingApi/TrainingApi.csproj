@@ -78,14 +78,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ProgramController.cs" />
+    <Compile Include="Controllers\DayController.cs" />
     <Compile Include="Controllers\SetController.cs" />
     <Compile Include="Controllers\MovementController.cs" />
     <Compile Include="Controllers\MuscleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Mappers\MuscleMapper.cs" />
-    <Compile Include="Models\Muscle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -99,15 +99,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj">
+      <Project>{bb2522e0-fd40-4d81-b649-22f15493fd92}</Project>
+      <Name>Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DBModels\DBModels.csproj">
       <Project>{931cd2c2-5607-4836-a1bc-88e132a6e507}</Project>
       <Name>DBModels</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Repository\Repository.csproj">
-      <Project>{ec164fdf-c367-47c5-9b04-8a351a56d2df}</Project>
-      <Name>Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

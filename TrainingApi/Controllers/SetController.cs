@@ -1,5 +1,5 @@
-﻿using DBModels;
-using Repository;
+﻿using Business;
+using DBModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +11,18 @@ namespace TrainingApi.Controllers
 {
     public class SetController : ApiController
     {
-        MovementRepository movementRepoitory = new MovementRepository();
+        SetBusiness setBusiness = new SetBusiness();
 
-        public List<Movement> GetAllMovements()
+        [HttpGet]
+        public IHttpActionResult Get(int id)
         {
-            return movementRepoitory.GetMovements();
+            return Ok(setBusiness.GetSet(id));
         }
 
-        public Movement GetMovementById(int id)
+        [HttpPost]
+        public IHttpActionResult Post(Set set)
         {
-            return movementRepoitory.GetMovement(id);
+            return Ok(setBusiness.CreateNewSet(set));
         }
     }
 }

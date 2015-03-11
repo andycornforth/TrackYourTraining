@@ -98,4 +98,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ProgramDayId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="fd7d517e-72b8-4091-ac80-a055b77bfa84" ChangeDateTime="03/07/2015 15:18:07">
+    <Property Name="ElementName" Value="[dbo].[DifficultyLevel].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DifficultyLevel]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DifficultyLevelId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3ea62028-a09f-4d8e-be49-d90f14bde8e4" ChangeDateTime="03/07/2015 15:19:09">
+    <Property Name="ElementName" Value="[dbo].[WeightType].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[WeightType]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="WeightTypeId" />
+  </Operation>
 </Operations>

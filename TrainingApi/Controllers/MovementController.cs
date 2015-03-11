@@ -1,5 +1,5 @@
-﻿using DBModels;
-using Repository;
+﻿using Business;
+using DBModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,21 +11,25 @@ namespace TrainingApi.Controllers
 {
     public class MovementController : ApiController
     {
-        MovementRepository movementRepoitory = new MovementRepository();
+        MovementBusiness movementRepository = new MovementBusiness();
 
-        public List<Movement> GetAllMovements()
+        [HttpGet]
+        public IHttpActionResult GetAllMovements()
         {
-            return movementRepoitory.GetMovements();
+            return Ok(movementRepository.GetAllMovements());
         }
 
-        public Movement GetMovementById(int id)
+        [HttpGet]
+        public IHttpActionResult GetMovementById(int id)
         {
-            return movementRepoitory.GetMovement(id);
+            return Ok(movementRepository.GetMovementById(id));
         }
 
-        public void PostNewMovement(Movement movement)
+        [HttpPost]
+        public IHttpActionResult PostNewMovement(Movement movement)
         {
-            //movementRepoitory.InsertNewMovement(name, primaryMuscleId, (DBModels.WeightType)weightTypeId, (DBModels.DifficultyLevel) difficultyLevelId, description);
+            return Ok(movementRepository.InsertNewMovement(movement));
         }
+
     }
 }

@@ -7,7 +7,7 @@
 
     <h2>All API Methods</h2>
 
-    <div>
+    <div style="float:left; width:50%;">
         <h2>Search by URI</h2>
         <input type="text" id="request" size="5" style="width:300px; font-size:2em;" />
         <input type="button" value="Search" onclick="find();" style="font-size:2em;" />
@@ -15,6 +15,24 @@
         <p>Post:</p>
         <textarea id="postArea" rows="10" cols="40"></textarea>
 
+        <div id="Methods" style="margin:50px; line-height:150%;">
+            GET : Muscle <br />
+            GET : Muscle/{id} <br />
+            GET : Movement <br />
+            GET : Movement/{id} <br />
+            POST : Movement <br />
+            GET : Set/{id} <br />
+            POST : Set <br />
+            GET : DayName /{dayId}<br />
+            GET : SetsForDay/{dayId} <br />
+            POST : AddDay/ <br />
+            GET : Programs <br />
+            GET : Program/{programId} <br />
+            GET : Days/{programId} <br />
+            POST : Program <br />
+        </div>
+    </div>
+    <div style="float:right; width:50%;">
         <p id="response" style="font-size:2em;" />
     </div>
 
@@ -33,13 +51,6 @@
                         $('#response').text('Error: ' + err);
                     });
             } else {
-                //var movement = {
-                //    Name: "aa",
-                //    PrimaryMuscleId: 1,
-                //    WeightTypeId: 1,
-                //    DifficultyLevelId: 1,
-                //    Description: "sdfs"
-                //};
                 $.ajax({
                     type: "POST",
                     data: postAreaValue,

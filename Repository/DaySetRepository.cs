@@ -10,15 +10,15 @@ namespace Repository
 {
     public class DaySetRepository : BaseSqlRepository
     {
-        public void AddSetToDay(int dayId, int setId)
+        public int AddSetToDay(int dayId, int setId)
         {
-            string query = @"INSERT into [Training_DB].[dbo].[DaySet] (DayId, SetId) VALUES (" + dayId + ", " + setId + ");";
+            string query = @"INSERT into [Training_DB].[dbo].[DaySet] (DayId, SetId) VALUES (" + dayId + ", " + setId + ");  SELECT SCOPE_IDENTITY()";
 
             var command = GetCommand(query, CommandType.Text);
-            ExecuteNonQueryChecked(command);
+            return ExecuteInt32Scalar(command);
         }
 
-        public List<DaySet> GetDay(int dayId)
+        public List<DaySet> GetSetIdsForDay(int dayId)
         {
             string query = @"SELECT * FROM [Training_DB].[dbo].[DaySet] WHERE DayId = " + dayId;
 

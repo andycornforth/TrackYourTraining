@@ -113,7 +113,7 @@ namespace Repository
             try
             {
                 command.Connection.Open();
-                return (int) command.ExecuteScalar();
+                return Convert.ToInt32(command.ExecuteScalar());
             }
             catch (SqlException e)
             {
