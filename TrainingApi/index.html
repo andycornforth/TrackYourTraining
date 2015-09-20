@@ -41,8 +41,8 @@
 
         function find() {
             var postAreaValue = $('#postArea').val();
+            var request = $('#request').val();
             if (postAreaValue == undefined || postAreaValue == "") {
-                var request = $('#request').val();
                 $.getJSON('api/' + request)
                     .done(function (data) {
                         $('#response').text(formatItem(data));
@@ -54,7 +54,7 @@
                 $.ajax({
                     type: "POST",
                     data: postAreaValue,
-                    url: "api/Movement",
+                    url: "api/" + request,
                     contentType: "application/json"
                 });
             }

@@ -50,7 +50,7 @@ namespace TrainingApi
             config.Routes.MapHttpRoute(
                 name: "SetByIdRoute",
                 routeTemplate: "api/Set/{id}",
-                defaults: new { controller = "Set" }
+                defaults: new { controller = "Set"}
             );
 
             config.Routes.MapHttpRoute(
@@ -100,7 +100,8 @@ namespace TrainingApi
             config.Routes.MapHttpRoute(
                 name: "ProgramAddRoute",
                 routeTemplate: "api/Program",
-                defaults: new { controller = "Program", action = "PostNewProgram" }
+                defaults: new { controller = "Program", action = "PostNewProgram" },
+                constraints: new { controller = "Program", action = "PostNewProgram" }
             );
         }
     }

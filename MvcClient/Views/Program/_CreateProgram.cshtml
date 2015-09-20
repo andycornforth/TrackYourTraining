@@ -1,0 +1,105 @@
+﻿<style type="text/css">
+    table, td {
+        background-color: azure;
+        border: double;
+    }
+
+    #remove-button {
+        width: 100%;
+    }
+
+    td {
+        width: 50%;
+    }
+
+    table {
+        width: 90%;
+    }
+
+    #dvleft {
+        overflow: auto;
+    }
+
+    #dvright, #dvleft {
+        background-color: azure;
+        height: 500px;
+    }
+
+    input[type='radio'] {
+        display: none;
+    }
+
+        input[type="radio"]:checked + label {
+            color: darkblue;
+        }
+</style>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        setEvents();
+
+        //Function to set events for Drag-Drop
+        function setEvents() {
+            var lstProducts = $('li');
+            //Set Drag on Each 'li' in the list
+            $.each(lstProducts, function (idx, val) {
+                $('li').on('dragstart', function (evt) {
+                    evt.originalEvent.dataTransfer.setData("Text", evt.target.textContent);
+                    evt.target.draggable = false;
+                });
+            });
+
+            //Set the Drop on the <div>
+            $("#dvright").on('drop', function (evt) {
+                evt.preventDefault();
+                var data = evt.originalEvent.dataTransfer.getData("Text");
+                var lst = $("#lstselectedproducts");
+                var li = "<input class='routine-radio' type='radio' id='" + data + "' name='routine-radio' value='" + data + "'/><label for='" + data + "'>" + data + "</label><br/>";
+                li.textContent = data;
+                lst.append(li);
+            });
+
+            //The dragover
+            $("#dvright").on('dragover', function (evt) {
+                evt.preventDefault();
+            });
+        }
+    });
+</script>
+
+<table>
+    <tr>
+        <td>
+            <h3>Exercises</h3>
+        </td>
+        <td>
+            <h3>Your Routine</h3>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div id="dvleft">
+                <ul id="lstproducts">
+                    @foreach (var exercise in ViewBag.Exercises)
+                    {
+                        <li draggable='true'>
+                            <a href="@Url.Action("ExerciseDetails", "Exercises", new { exerciseId = exercise.Id })">
+                                @exercise.Name
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </td>
+        <td>
+            <div id="dvright">
+                <ul id="lstselectedproducts"></ul>
+            </div>
+            <button id="remove-button">Remove from Routine</button>
+            @*<input type="button" value="Remove" onclick="location.href='@Url.Action("Create", "User")'" />*@
+        </td>
+    </tr>
+</table>

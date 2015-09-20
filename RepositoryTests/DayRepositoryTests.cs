@@ -12,7 +12,7 @@ namespace RepositoryTests
         public void ICanAddANewDayToDB()
         {
             var dayRepository = new DayRepository();
-            dayRepository.CreateNewDay("Leg Day");
+            dayRepository.CreateNewDay(new Day("Leg Day"));
         }
 
         public void ICanGetAllTheSetsForADay()

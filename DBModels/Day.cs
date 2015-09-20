@@ -10,5 +10,12 @@ namespace DBModels
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public Day(string name)
+        {
+            Name = name;
+        }
+
+        public Day() { }
     }
 }

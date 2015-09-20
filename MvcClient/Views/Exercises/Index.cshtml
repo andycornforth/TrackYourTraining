@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Exercises";
+}
+
+<div class="jumbotron">
+    <table style="width:100%">
+        <tr>
+            <th>Exercises</th>
+            <th>Primary Muscle</th>
+        </tr>
+
+        @foreach (var exercise in ViewBag.Exercises)
+        {
+            <tr>
+                <td><a href="@Url.Action("ExerciseDetails", "Exercises", new { exerciseId = exercise.Id })">@exercise.Name</a></td>
+                <td style="font-size:75%">@exercise.PrimaryMuscle.MuscleName</td>
+            </tr>
+        }
+    </table>
+</div>

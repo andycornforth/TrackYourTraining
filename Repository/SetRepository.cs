@@ -13,8 +13,8 @@ namespace Repository
 
         public int CreateNewSet(Set set)
         {
-            string insertion = @"INSERT into [Training_DB].[dbo].[Set] (MovementId, SetNumber, Reps, Weight, TempoId) 
-                VALUES (" + set.Movement.Id + ", " + set.SetNumber + ", " + set.Reps + ", " + set.Weight + ", " + set.Tempo.Id + ");  SELECT SCOPE_IDENTITY()";
+            string insertion = @"INSERT into [Training_DB].[dbo].[Set] (MovementId, SetNumber, Reps, Weight, TempoId, WeightPercentageId) 
+                VALUES (" + set.Movement.Id + ", " + set.SetNumber + ", " + set.Reps + ", " + set.Weight + ", " + set.Tempo.Id + ", " + set.WeightPercentage.Id + ");  SELECT SCOPE_IDENTITY()";
 
             var command = GetCommand(insertion, CommandType.Text);
             return ExecuteInt32Scalar(command);
@@ -25,10 +25,13 @@ namespace Repository
             var query = @"SELECT [Training_DB].[dbo].[Set].SetId, [Training_DB].[dbo].[Set].SetNumber, [Training_DB].[dbo].[Set].Reps, [Training_DB].[dbo].[Set].Weight,
                             [Training_DB].[dbo].[Set].TempoId, [Training_DB].[dbo].[Movement].MovementId, [Training_DB].[dbo].[Movement].MovementName, [Training_DB].[dbo].[Movement].PrimaryMuscleId, 
                             [Training_DB].[dbo].[Movement].WeightTypeId, [Training_DB].[dbo].[Movement].DifficultyLevelId, 
-                            [Training_DB].[dbo].[Movement].Description, [Training_DB].[dbo].[Muscle].MuscleName, [Training_DB].[dbo].[WeightType].Name, [Training_DB].[dbo].[DifficultyLevel].Level
+                            [Training_DB].[dbo].[Movement].Description, [Training_DB].[dbo].[Muscle].MuscleName, [Training_DB].[dbo].[WeightType].Name, [Training_DB].[dbo].[DifficultyLevel].Level,
+                            [Training_DB].[dbo].[Set].WeightPercentageId, [Training_DB].[dbo].[WeightPercentage].[WeightPercentageName]
                             FROM [Training_DB].[dbo].[Set]
                             INNER JOIN [Training_DB].[dbo].[Movement]
                             ON [Training_DB].[dbo].[Set].MovementId = [Training_DB].[dbo].[Movement].MovementId
+                            INNER JOIN [Training_DB].[dbo].[WeightPercentage]
+                            ON [Training_DB].[dbo].[Set].WeightPercentageId = [Training_DB].[dbo].[WeightPercentage].WeightPercentageId
                             INNER JOIN [Training_DB].[dbo].[Muscle]
                             ON [Training_DB].[dbo].[Movement].PrimaryMuscleId = [Training_DB].[dbo].[Muscle].MuscleId
                             INNER JOIN [Training_DB].[dbo].[WeightType]
@@ -57,6 +60,7 @@ namespace Repository
             set.Movement.WeightType = new WeightType(reader.GetInt32(reader.GetOrdinal("WeightTypeId")), reader.GetString(reader.GetOrdinal("Name")));
             set.Movement.DifficultyLevel = new DifficultyLevel(reader.GetInt32(reader.GetOrdinal("DifficultyLevelId")), reader.GetString(reader.GetOrdinal("Level")));
             set.Movement.Description = (string)reader["Description"];
+            set.WeightPercentage = new WeightPercentage(reader.GetInt32(reader.GetOrdinal("WeightPercentageId")), reader.GetString(reader.GetOrdinal("WeightPercentageName")));
 
             return set;
         }

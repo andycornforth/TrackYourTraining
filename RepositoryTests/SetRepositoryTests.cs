@@ -14,11 +14,12 @@ namespace RepositoryTests
             var setRepository = new SetRepository();
             setRepository.CreateNewSet(new Set()
             {
-                Movement = new Movement(){Id = 1},
+                Movement = new Movement() { Id = 1 },
                 SetNumber = 1,
                 Reps = 8,
                 Weight = 120,
-                Tempo = new Tempo(){Id=1}
+                Tempo = new Tempo() { Id = 1 },
+                WeightPercentage = new WeightPercentage() { Id = 1 }
             });
         }
 
@@ -32,6 +33,7 @@ namespace RepositoryTests
             Assert.AreEqual(82.5, set.Weight);
             Assert.AreEqual(8, set.Reps);
             Assert.AreEqual(1, set.SetNumber);
+            Assert.AreEqual(2, set.WeightPercentage.Id);
         }
     }
 }

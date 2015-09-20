@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = ViewBag.Program.Name;
+}
+
+<div class="jumbotron">
+    <h1>@ViewBag.Program.Name</h1>
+    <p class="lead">@ViewBag.Program.Description</p>
+    <br />
+    <table style="width:100%">
+        <tr>
+            @foreach (var day in ViewBag.Days)
+            {
+                <td><a href="@Url.Action("ViewDay", "Day", new { dayId = day.Id, dayName = day.Name })">@day.Name</a></td>
+            }
+        </tr>
+    </table>
+</div>

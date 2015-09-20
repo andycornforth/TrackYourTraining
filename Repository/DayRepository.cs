@@ -11,10 +11,10 @@ namespace Repository
     public class DayRepository : BaseSqlRepository
     {
 
-        public int CreateNewDay(string name)
+        public int CreateNewDay(Day day)
         {
             string insertion = @"INSERT into [Training_DB].[dbo].[Day] (DayName) 
-                VALUES ('" + name + "'); SELECT SCOPE_IDENTITY()";
+                VALUES ('" + day.Name + "'); SELECT SCOPE_IDENTITY()";
 
             var command = GetCommand(insertion, CommandType.Text);
             return ExecuteInt32Scalar(command);

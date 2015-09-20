@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = ViewBag.DayName;
+}
+
+<div class="jumbotron">
+    <h1>@ViewBag.DayName</h1>
+    <table style="width:100%">
+        <tr>
+            <th>Set Number</th>
+            <th>Exercise</th>
+            <th>Reps</th>
+            <th>Weight</th>
+        </tr>
+        @foreach (var set in ViewBag.Sets)
+        {
+            <tr>
+                <td>@set.SetNumber</td>
+                <td><a href="@Url.Action("ExerciseDetails", "Exercises", new { exerciseId = set.Movement.Id })">@set.Movement.Name</a></td>
+                <td>@set.Reps</td>
+                <td>@set.Weight</td>
+            </tr>
+        }
+    </table>
+</div>

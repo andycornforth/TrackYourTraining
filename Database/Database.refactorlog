@@ -112,4 +112,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="WeightTypeId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="6b2b1a14-699d-4d97-bc3d-6ede17c59a37" ChangeDateTime="03/14/2015 11:05:51">
+    <Property Name="ElementName" Value="[dbo].[WeightPercentage].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[WeightPercentage]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="WeightPercentageId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f171b657-d8cb-41ae-8872-382d3ec07bd1" ChangeDateTime="03/14/2015 11:08:59">
+    <Property Name="ElementName" Value="[dbo].[Set].[WeightPercentage]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Set]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="WeightPercentageId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4ffcde48-ab5c-42b2-ab3b-7fdd332ba51d" ChangeDateTime="03/14/2015 18:05:44">
+    <Property Name="ElementName" Value="[dbo].[WeightPercentage].[Name]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[WeightPercentage]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="WeightPercentageName" />
+  </Operation>
 </Operations>

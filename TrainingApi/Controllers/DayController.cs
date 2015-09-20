@@ -26,9 +26,9 @@ namespace TrainingApi.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult PostNewDay(string dayName)
+        public IHttpActionResult PostNewDay(Day day)
         {
-            return Ok(dayBusiness.CreateNewDay(dayName));
+            return Ok(dayBusiness.CreateNewDay(day));
         }
     }
 }
